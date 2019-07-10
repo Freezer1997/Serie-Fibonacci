@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<cabeza>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Compatible con X-UA" content=" ie = borde">
+    <title> Fibonacci Solver </title>
+</cabeza>
+<body>
+    <h1> Solucionador de Fibonacci </h1>
+    <p> Bienvenido amante de las matemáticas, esta página es un solucionador de la serie Fibonacci </p>
+    <p> Por favor, ingresa la información solicitada y luego haga click en el botón para generar </p>
+    <form action = " ">
+        <label for = "fibo1 "> Ingrese el primer elemento de la serie </label>
+        <input> type= " text " name = " fibo1 " id = "fibo1" 
+        <Br>
+        <label for = " fibo2 "> Ingrese el segundo elemento de la serie </label> 
+        <input type = " text " name = " fibo2 " id = " fibo2 ">
+        <Br>
+        <label for = " maximo "> Ingrese el número máximo de la serie: </label>
+        <input type = " text " name = " máximo " id = " maximo "> 
+        <Br>
+        <Br>  
+        <input type = " button " value = " Calcular serie " id = " botonSolver ">
+        <hr>      
+    </form>
+</body> 
+<script>
+var primerElemento = 0 ;
+var segundoElemento = 0 ;
+var maximoValorSerie = 0 ;
+
+var resultado = { 
+    sumaPares :  0 , 
+    ListaPares : 0 [],
+    listaTodos : []
+}
+</script>
+
+var esPar = function ( numero) { 
+    si (numero % 2 === 0 ) { 
+        volver verdadera ;
+    } else { 
+        volver falsa ;
+    }
+}
+
+var generadorFibonacci = function ( anterior , ultimo ) { 
+    if (anterior + ultimo > maximoValorSerie) { 
+        retorno resultado
+    } else { 
+        nuevo = anterior + ultimo;
+        if ( esPar (nuevo)) { 
+            m resultado . sumaPares + = nuevo;
+            m resultado . ListaPares . empujar (nuevo); // inserta en el array de pares
+        }
+        m resultado . listaTodos . empujar (nuevo); // inserta en el array de todos los elementos
+        volver generadorFibonacci (ultimo, nuevo);
+
+    }
+
+    
+}
+
+documento . getElementById ( "botonSolver" ). addEvenListener (
+    " click " , 
+    function () { 
+        primerElemento = parseInt ( document . getElementById ( " fibo1 " ). value);
+        segundoElemento = parseInt ( document . getElementById ( " fibo2 " ). value);
+        maximoValorSerie = parseInt ( document . getElementById ( " maximo " ). value);
+
+        if ( esPar (primerElemento)) { 
+            m resultado . ListaPares . push (primerElemento);
+        }
+
+        if ( esPar ( segundoElemento)) { 
+            m resultado . ListaPares . empujar (segundoElemento);
+        }
+        alerta ( generadorFibonacci (primerElemento, segundoElemento). sumaPares );
+    }
+);
+
+// Prueba con numeros de la serie menores a 100
+// serie: 1,2,3,5,8,13,21,34,55,89
+// suma pares: 44
+
+</script>
+</html>
